@@ -21,9 +21,7 @@ namespace Domain.Entities
 
         public Director DirectorMovie { get; set; } 
 
-        public List<Show> SHows { get; set; }
+        public List<Show> Shows { get; set; }
 
-
-        public Movie() { }
     }
 }
