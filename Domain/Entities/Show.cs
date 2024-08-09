@@ -14,9 +14,9 @@ namespace Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [ForeignKey(nameof(MovieId))]
-        public int MovieId { get; set; }  // Foreign Key
-        public Movie MovieDirector { get; set; }
+        [Required]
+        [ForeignKey("MovieId")]  // Foreign Key
+        public Movie Movie { get; set; }
 
         public string StartTime { get; set; }
 
