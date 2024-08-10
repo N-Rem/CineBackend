@@ -18,7 +18,7 @@ namespace Domain.Entities
 
         //public int IdDirector { get; set; }
         [Required]
-        [ForeignKey("IdDirector")]
+        [ForeignKey("DirectorId")]
         public Director DirectorMovie { get; set; } 
 
         public List<Show> Shows { get; set; }
