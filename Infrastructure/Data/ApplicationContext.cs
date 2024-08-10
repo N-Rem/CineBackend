@@ -24,15 +24,15 @@ namespace Infrastructure.Data
             //Relación de uno a muchos entre Movie y Show
             modelBuilder.Entity<Movie>()
                 .HasMany(m => m.Shows)
-                .WithOne()
-                .HasForeignKey(s => s.MovieId)
+                .WithOne(s => s.Movie)
+                .HasForeignKey(s => s.Movie.Id)
                 .OnDelete(DeleteBehavior.Cascade); //asegura que si una película se elimina, todas las funciones asociadas también se eliminarán.
 
-            modelBuilder.Entity<Show>()
-                .HasMany(m => m.Shows)
-                .WithOne()
-                .HasForeignKey(s => s.MovieId)
-                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Director>()
+                .HasMany(d => d.Movies)
+                .WithOne(m => m.DirectorMovie)
+                .HasForeignKey(m => m.DirectorMovie)
+                .OnDelete(DeleteBehavior.Cascade); //asegura que si un director se elimina, todas sus peliculas asociadas también se eliminarán.
         }
     }
 }
