@@ -14,6 +14,7 @@ namespace Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Column(TypeName = "nvarchar(100)")]
         public string Title { get; set; }
 
         //public int IdDirector { get; set; }

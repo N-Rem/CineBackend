@@ -18,10 +18,13 @@ namespace Domain.Entities
         [ForeignKey("MovieId")]  // Foreign Key
         public Movie Movie { get; set; }
 
+        [Column(TypeName = "nvarchar(20)")]
         public string StartTime { get; set; }
 
+        [Column(TypeName = "nvarchar(20)")]
         public string Date { get; set; }
 
+        [Column(TypeName = "nvarchar(20)")]
         public string Price { get; set; }
 
 
