@@ -14,10 +14,10 @@ namespace Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Column(TypeName = "nvarchar(100)")]
         public string Name { get; set; }
 
         public List<Movie> Movies { get; set; }
-
 
         public Director() { }
     }
