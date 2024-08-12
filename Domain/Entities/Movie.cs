@@ -16,13 +16,18 @@ namespace Domain.Entities
 
         [Column(TypeName = "nvarchar(100)")]
         public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
 
         //public int IdDirector { get; set; }
         [Required]
         [ForeignKey("DirectorId")]
+        public int DirectorId { get; set; }
         public Director DirectorMovie { get; set; } 
 
         public List<Show> Shows { get; set; }
+
+        
 
     }
 }
