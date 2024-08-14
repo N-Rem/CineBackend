@@ -7,5 +7,6 @@ namespace Cine.Controllers
     [ApiController]
     public class ControllerController : ControllerBase
     {
+
     }
 }
