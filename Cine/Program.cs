@@ -1,6 +1,9 @@
 using Infrastructure.Data;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Domain.Interface;
+using Application.Services;
+using Application.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +28,12 @@ using (var command = connection.CreateCommand())
 }
 
 builder.Services.AddDbContext<ApplicationContext>(dbContextOptions => dbContextOptions.UseSqlite(connection));
+
+//Injections Respository
+builder.Services.AddScoped<IRepositoryMovie, RepositoryMovie>();
+
+//Injection Service
+builder.Services.AddScoped<IMovieServices, MovieServices>();
 
 var app = builder.Build();
 

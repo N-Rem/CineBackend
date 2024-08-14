@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Application.Models.Requests
 {
-    internal class MovieUpdateRequest
+    public class MovieUpdateRequest
     {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+        public int DirectorId { get; set; }
+        public DirectorDto DirectorMovie { get; set; }
+        public List<ShowDto> Shows { get; set; }
     }
 }

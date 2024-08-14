@@ -19,7 +19,6 @@ namespace Domain.Entities
         public string Description { get; set; }
         public string ImageUrl { get; set; }
 
-        //public int IdDirector { get; set; }
         [Required]
         [ForeignKey("DirectorId")]
         public int DirectorId { get; set; }

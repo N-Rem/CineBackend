@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Application.Models.Requests
 {
-    internal class MovieCreateRequest
+    public class MovieCreateRequest
     {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+        public int DirectorId { get; set; }
     }
 }
