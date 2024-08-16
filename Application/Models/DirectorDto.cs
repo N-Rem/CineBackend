@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces
+namespace Application.Models
 {
-    internal interface Interface1
+    public class DirectorDto
     {
     }
 }
