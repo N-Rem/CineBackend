@@ -30,11 +30,12 @@ namespace Domain.Entities
 
         public Show() { }
 
-        public Show(string startTime, string date, string price) 
+        public Show(string startTime, string date, string price, int movieId) 
         { 
             StartTime = startTime;
             Date = date;
             Price = price;
+            MovieId = movieId;
         }
 
     }

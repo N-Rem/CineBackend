@@ -62,9 +62,15 @@ namespace Infrastructure.Data
         }
 
 
-        public void AddShow(string startTime, string date, string price)
+        public void AddShow(string startTime, string date, string price, int movieId)
         {
-            _context.Shows.Add(new Show { StartTime = startTime, Date = date, Price = price });
+            var show = new Show { StartTime = startTime, Date = date, Price = price, MovieId = movieId };
+
+            var movie = _context.Movies.FirstOrDefault(m => m.Id == movieId);
+
+            if (movie is not null)
+                movie.Shows.Add(show);
+
             _context.SaveChanges();
         }
     }

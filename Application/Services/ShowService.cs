@@ -33,9 +33,9 @@ namespace Application.Services
             return _ShowRepository.DeleteShow(idShow);
         }
 
-        public void AddShow(string startTime, string date, string price)
+        public void AddShow(string startTime, string date, string price, int movieId)
         {
-            _ShowRepository.AddShow(startTime, date, price);
+            _ShowRepository.AddShow(startTime, date, price,movieId);
         }
     }
 }

@@ -46,9 +46,9 @@ namespace Cine.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult AddShow(string startTime, string date, string price)
+        public IActionResult AddShow(string startTime, string date, string price, int movieId)
         {
-            _showService.AddShow(startTime, date, price);
+            _showService.AddShow(startTime, date, price, movieId);
             return Ok();
         }
     }
