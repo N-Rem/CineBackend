@@ -32,8 +32,10 @@ builder.Services.AddDbContext<ApplicationContext>(dbContextOptions => dbContextO
 //Injections Respository
 builder.Services.AddScoped<IRepositoryMovie, RepositoryMovie>();
 
+
 //Injection Service
 builder.Services.AddScoped<IMovieServices, MovieServices>();
+
 
 var app = builder.Build();
 
