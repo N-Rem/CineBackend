@@ -17,7 +17,6 @@ namespace Domain.Entities
         [Required]
         [ForeignKey("MovieId")]  // Foreign Key
         public int MovieId {  get; set; }
-        public Movie Movie { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
         public string StartTime { get; set; }
