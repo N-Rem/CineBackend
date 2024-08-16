@@ -24,7 +24,7 @@ namespace Infrastructure.Data
             //Relación de uno a muchos entre Movie y Show
             modelBuilder.Entity<Movie>()
                 .HasMany(m => m.Shows)
-                .WithOne(s => s.Movie)
+                .WithOne()
                 .HasForeignKey(s => s.MovieId) //Error porque no puede acceder al id
                 .OnDelete(DeleteBehavior.Cascade); //asegura que si una película se elimina, todas las funciones asociadas también se eliminarán.
 
