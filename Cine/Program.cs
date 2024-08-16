@@ -31,10 +31,12 @@ builder.Services.AddDbContext<ApplicationContext>(dbContextOptions => dbContextO
 
 //Injections Respository
 builder.Services.AddScoped<IRepositoryMovie, RepositoryMovie>();
+builder.Services.AddScoped<IShowService, ShowService>();
 
 
 //Injection Service
 builder.Services.AddScoped<IMovieServices, MovieServices>();
+builder.Services.AddScoped<IRepositoryShow, RepositoryShow>();
 
 
 var app = builder.Build();

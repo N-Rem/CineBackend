@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +67,7 @@ namespace Infrastructure.Data
         {
             var show = new Show { StartTime = startTime, Date = date, Price = price, MovieId = movieId };
 
-            var movie = _context.Movies.FirstOrDefault(m => m.Id == movieId);
+            var movie = _context.Movies.Include(m => m.Shows).FirstOrDefault(m => m.Id == movieId);
 
             if (movie is not null)
                 movie.Shows.Add(show);
