@@ -30,7 +30,7 @@ namespace Infrastructure.Data
 
             modelBuilder.Entity<Director>()
                 .HasMany(d => d.Movies)
-                .WithOne(m => m.DirectorMovie)
+                .WithOne(/*m => m.DirectorMovie*/)
                 .HasForeignKey(m => m.DirectorId)
                 .OnDelete(DeleteBehavior.Cascade); //asegura que si un director se elimina, todas sus peliculas asociadas también se eliminarán.
 
