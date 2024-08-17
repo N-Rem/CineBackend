@@ -19,15 +19,21 @@ namespace Infrastructure.Data
     
         public ICollection<Movie>? GetAllMovies()
         {
-            var listMovies = _context.Movies.Include(m => m.DirectorMovie).Include(m => m.Shows).ToList()
+            var listMovies = _context.Movies
+                /*Include(m => m.DirectorMovie).*/
+                .Include(m => m.Shows).ToList()
+
             ?? throw new Exception("Movies not found");
             return listMovies;
         }
 
         public Movie? GetMoviesById(int Id) 
         {
-            var movie = _context.Movies.Include(m => m.DirectorMovie).Include(m => m.Shows).FirstOrDefault(m => m.Id == Id)
-                ?? throw new Exception("Movie not found");
+            var movie = _context.Movies
+                /*Include(m => m.DirectorMovie)*/
+                .Include(m => m.Shows).FirstOrDefault(m => m.Id == Id)
+
+            ?? throw new Exception("Movie not found");
             return movie;
         }
     }
