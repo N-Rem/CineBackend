@@ -17,7 +17,7 @@ namespace Infrastructure.Data
             _context = context;
         }
     
-        public ICollection<Movie>? GetAllMovies()
+        public List<Movie>? GetAllMovies()
         {
             var listMovies = _context.Movies
                 /*Include(m => m.DirectorMovie).*/

@@ -30,9 +30,9 @@ namespace Application.Services
             return dto;
         }
 
-        public IEnumerable<MovieDto> GetAll()
+        public List<Movie> GetAll()
         {
-            return MovieDto.CreateList(_repositoryMovie.GetAll());
+            return _repositoryMovie.GetAll();
         }
 
         public void Create (MovieCreateRequest movieDto)

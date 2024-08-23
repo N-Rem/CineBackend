@@ -21,8 +21,8 @@ namespace Cine.Controllers
         {
             var list = _showService.GetShowsByMovieId(movieId);
 
-            if(list == null) 
-                return Ok();
+            if(list is not null) 
+                return Ok(list);
 
             return NotFound();
         }

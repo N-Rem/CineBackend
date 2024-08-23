@@ -9,7 +9,7 @@ namespace Domain.Interface
 {
     public interface IRepositoryMovie:IRepositoryBase<Movie>
     {
-        ICollection<Movie>? GetAllMovies();
+        List<Movie>? GetAllMovies();
         Movie? GetMoviesById(int Id);
     }
 }
