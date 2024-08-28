@@ -35,7 +35,7 @@ namespace Application.Services
 
         public void AddShow(string startTime, string date, string price, int movieId)
         {
-            _ShowRepository.AddShow(startTime, date, price,movieId);
+            _ShowRepository.AddShow(startTime, date, price, movieId);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Cine.Controllers
         }   
 
         [HttpGet("[action]")]
-        public IActionResult GetShowsByMovieId(int movieId)
+        public IActionResult GetShowsByMovieId([FromRoute] int movieId)
         {
             var list = _showService.GetShowsByMovieId(movieId);
 
@@ -28,7 +28,7 @@ namespace Cine.Controllers
         }
 
         [HttpPut("[action]")]
-        public IActionResult ModifyShow(int idShow, string startTime, string date, string price)
+        public IActionResult ModifyShow([FromRoute] int idShow, [FromBody] string startTime, string date, string price)
         {
             if(_showService.ModifyShow(idShow, startTime, date, price)) 
                 return Ok();
@@ -37,7 +37,7 @@ namespace Cine.Controllers
         }
 
         [HttpDelete("[action]")]
-        public IActionResult DeleteShow(int idShow)
+        public IActionResult DeleteShow([FromRoute] int idShow)
         {
             if(_showService.DeleteShow(idShow))
                 return Ok();
@@ -46,7 +46,7 @@ namespace Cine.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult AddShow(string startTime, string date, string price, int movieId)
+        public IActionResult AddShow([FromBody] string startTime, string date, string price, int movieId)
         {
             _showService.AddShow(startTime, date, price, movieId);
             return Ok();
