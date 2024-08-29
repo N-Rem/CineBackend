@@ -8,5 +8,9 @@ namespace Application.Models
 {
     public class ShowDto
     {
+        public string SartTime { get; set; }
+        public string Date { get; set; }
+        public string Price { get; set; }
+
     }
 }

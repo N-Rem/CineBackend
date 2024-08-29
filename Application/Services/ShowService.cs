@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Application.Models;
 using Domain.Entities;
 using Infrastructure.Data;
 using System;
@@ -23,9 +24,9 @@ namespace Application.Services
             return _ShowRepository.GetShowsByMovieId(movieId);
         }
 
-        public bool ModifyShow(int idShow, string startTime, string date, string price)
+        public bool ModifyShow(int idShow, ShowDto show)
         {
-            return (_ShowRepository.ModifyShow(idShow, startTime, date, price));
+            return (_ShowRepository.ModifyShow(idShow, show.SartTime, show.Date, show.Price));
         }
 
         public bool DeleteShow(int idShow)

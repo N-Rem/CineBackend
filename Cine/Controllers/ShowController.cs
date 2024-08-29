@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Application.Models;
 using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +29,9 @@ namespace Cine.Controllers
         }
 
         [HttpPut("[action]")]
-        public IActionResult ModifyShow([FromRoute] int idShow, [FromBody] string startTime, string date, string price)
+        public IActionResult ModifyShow([FromRoute] int idShow, [FromBody] ShowDto show)
         {
-            if(_showService.ModifyShow(idShow, startTime, date, price)) 
+            if(_showService.ModifyShow(idShow, show)) 
                 return Ok();
 
             return NotFound();
