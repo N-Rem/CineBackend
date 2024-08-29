@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Models;
+using Application.Models.Requests;
 using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace Cine.Controllers
             _showService=showService;
         }   
 
-        [HttpGet("[action]")]
+        [HttpGet("[action]/{movieId}")]
         public IActionResult GetShowsByMovieId([FromRoute] int movieId)
         {
             var list = _showService.GetShowsByMovieId(movieId);
@@ -28,7 +29,7 @@ namespace Cine.Controllers
             return NotFound();
         }
 
-        [HttpPut("[action]")]
+        [HttpPut("[action]/{idShow}")]
         public IActionResult ModifyShow([FromRoute] int idShow, [FromBody] ShowDto show)
         {
             if(_showService.ModifyShow(idShow, show)) 
@@ -37,7 +38,7 @@ namespace Cine.Controllers
             return NotFound();
         }
 
-        [HttpDelete("[action]")]
+        [HttpDelete("[action]/{idShow}")]
         public IActionResult DeleteShow([FromRoute] int idShow)
         {
             if(_showService.DeleteShow(idShow))
@@ -47,9 +48,9 @@ namespace Cine.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult AddShow([FromBody] string startTime, string date, string price, int movieId)
+        public IActionResult AddShow([FromBody] CeateShowDto show)
         {
-            _showService.AddShow(startTime, date, price, movieId);
+            _showService.AddShow(show);
             return Ok();
         }
     }

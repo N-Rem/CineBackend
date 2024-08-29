@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Models;
+using Application.Models.Requests;
 using Domain.Entities;
 using Infrastructure.Data;
 using System;
@@ -34,9 +35,9 @@ namespace Application.Services
             return _ShowRepository.DeleteShow(idShow);
         }
 
-        public void AddShow(string startTime, string date, string price, int movieId)
+        public void AddShow(CeateShowDto show)
         {
-            _ShowRepository.AddShow(startTime, date, price, movieId);
+            _ShowRepository.AddShow(show.SartTime, show.Date, show.Price, show.MovieId);
         }
     }
 }
