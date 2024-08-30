@@ -9,6 +9,6 @@ namespace Infrastructure.Data
         List<Show>? GetShowsByMovieId(int movieId);
         bool ModifyShow(int idShow, string startTime, string date, string price);
 
-        void AddShow(string startTime, string date, string price, int movieId);
+        void AddShow(string startTime, string date, string price, int movieId, int directorId, bool isNational);
     }
 }

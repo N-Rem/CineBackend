@@ -37,7 +37,7 @@ namespace Application.Services
 
         public void AddShow(CeateShowDto show)
         {
-            _ShowRepository.AddShow(show.SartTime, show.Date, show.Price, show.MovieId);
+            _ShowRepository.AddShow(show.SartTime, show.Date, show.Price, show.MovieId, show.DirectorId, show.IsNational);
         }
     }
 }
