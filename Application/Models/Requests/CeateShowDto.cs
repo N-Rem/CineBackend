@@ -12,5 +12,7 @@ namespace Application.Models.Requests
         public string Date { get; set; }
         public string Price { get; set; }
         public int MovieId { get; set; }
+        public int DirectorId { get; set; }
+        public bool IsNational { get; set; }
     }
 }

@@ -29,7 +29,6 @@ namespace Domain.Entities
 
         public List<Show> Shows { get; set; }
 
-        
 
     }
 }

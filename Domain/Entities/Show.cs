@@ -27,7 +27,8 @@ namespace Domain.Entities
         [Column(TypeName = "nvarchar(20)")]
         public string Price { get; set; }
 
-        [Column(TypeName = "number(2)")]
+        [Required]
+        [ForeignKey("DirectorId")]
         public int DirectorId { get; set; }
 
         [Column(TypeName = "boolean")]

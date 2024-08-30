@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240816225456_UpdateMigration")]
-    partial class UpdateMigration
+    [Migration("20240830230541_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,11 @@ namespace Infrastructure.Migrations
                         {
                             Id = 3,
                             Name = "Jon Watts"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Alejandro Doria"
                         });
                 });
 
@@ -68,6 +73,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsNational")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
@@ -85,6 +93,7 @@ namespace Infrastructure.Migrations
                             Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.",
                             DirectorId = 1,
                             ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlMhuTYAKZHxZXA4OzjqcKaopJEjTOzLxnQ&s",
+                            IsNational = false,
                             Title = "John Wick"
                         },
                         new
@@ -93,6 +102,7 @@ namespace Infrastructure.Migrations
                             Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.",
                             DirectorId = 2,
                             ImageUrl = "https://pics.filmaffinity.com/Deadpool-834516798-mmed.jpg",
+                            IsNational = false,
                             Title = "Deadpool"
                         },
                         new
@@ -101,7 +111,17 @@ namespace Infrastructure.Migrations
                             Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.",
                             DirectorId = 3,
                             ImageUrl = "https://hips.hearstapps.com/hmg-prod/images/spiderman-homecoming-poster-1551691492.jpg",
+                            IsNational = false,
                             Title = "Spiderman"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.",
+                            DirectorId = 4,
+                            ImageUrl = "https://www.arte.unicen.edu.ar/cdab/wp-content/uploads/2017/06/esperando-carroza.png",
+                            IsNational = true,
+                            Title = "Esperando la carroza"
                         });
                 });
 
@@ -114,6 +134,12 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Date")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("DirectorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsNational")
+                        .HasColumnType("boolean");
 
                     b.Property<int>("MovieId")
                         .HasColumnType("INTEGER");
@@ -135,13 +161,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Movie", b =>
                 {
-                    b.HasOne("Domain.Entities.Director", "DirectorMovie")
+                    b.HasOne("Domain.Entities.Director", null)
                         .WithMany("Movies")
                         .HasForeignKey("DirectorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("DirectorMovie");
                 });
 
             modelBuilder.Entity("Domain.Entities.Show", b =>

@@ -63,9 +63,9 @@ namespace Infrastructure.Data
         }
 
 
-        public void AddShow(string startTime, string date, string price, int movieId)
+        public void AddShow(string startTime, string date, string price, int movieId, int directorId, bool isNational)
         {
-            var show = new Show(startTime, date, price, movieId);
+            var show = new Show(startTime, date, price, movieId, directorId, isNational);
 
             var movie = _context.Movies.Include(m => m.Shows).FirstOrDefault(m => m.Id == movieId);
 
