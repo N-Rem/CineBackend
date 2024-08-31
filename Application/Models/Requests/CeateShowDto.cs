@@ -11,7 +11,5 @@ namespace Application.Models.Requests
         public DateTime Date { get; set; }
         public decimal Price { get; set; }
         public int MovieId { get; set; }
-        public int DirectorId { get; set; }
-        public bool IsNational { get; set; }
     }
 }

@@ -25,11 +25,9 @@ namespace Domain.Entities
 
         public bool IsNational { get; set; }
 
-        [Column(TypeName = "boolean")]
-        public bool IsNational { get; set; }
-
         public List<Show> Shows { get; set; }
 
+        
 
     }
 }
