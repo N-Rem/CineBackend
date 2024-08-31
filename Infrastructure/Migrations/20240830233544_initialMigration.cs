@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -7,7 +8,7 @@
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class initialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,7 +35,8 @@ namespace Infrastructure.Migrations
                     Title = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
-                    DirectorId = table.Column<int>(type: "INTEGER", nullable: false)
+                    DirectorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsNational = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,9 +56,8 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     MovieId = table.Column<int>(type: "INTEGER", nullable: false),
-                    StartTime = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    Date = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    Price = table.Column<string>(type: "nvarchar(20)", nullable: false)
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,17 +77,23 @@ namespace Infrastructure.Migrations
                 {
                     { 1, "Chad Stahelski" },
                     { 2, "Tim Miller" },
-                    { 3, "Jon Watts" }
+                    { 3, "Jon Watts" },
+                    { 4, "Juan José Campanella" },
+                    { 5, "Damián Szifron" },
+                    { 6, "Fabián Bielinsky" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Movies",
-                columns: new[] { "Id", "Description", "DirectorId", "ImageUrl", "Title" },
+                columns: new[] { "Id", "Description", "DirectorId", "ImageUrl", "IsNational", "Title" },
                 values: new object[,]
                 {
-                    { 1, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlMhuTYAKZHxZXA4OzjqcKaopJEjTOzLxnQ&s", "John Wick" },
-                    { 2, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 2, "https://pics.filmaffinity.com/Deadpool-834516798-mmed.jpg", "Deadpool" },
-                    { 3, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 3, "https://hips.hearstapps.com/hmg-prod/images/spiderman-homecoming-poster-1551691492.jpg", "Spiderman" }
+                    { 1, "Un asesino a sueldo sale de su retiro para vengarse de los que le hicieron daño.", 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlMhuTYAKZHxZXA4OzjqcKaopJEjTOzLxnQ&s", false, "John Wick" },
+                    { 2, "Un mercenario con habilidades de curación acelerada busca venganza.", 2, "https://pics.filmaffinity.com/Deadpool-834516798-mmed.jpg", false, "Deadpool" },
+                    { 3, "Un joven adquiere habilidades arácnidas después de ser mordido por una araña radioactiva.", 3, "https://hips.hearstapps.com/hmg-prod/images/spiderman-homecoming-poster-1551691492.jpg", false, "Spiderman" },
+                    { 4, "Un ex funcionario judicial decide escribir una novela basada en un caso real que lo afectó profundamente.", 4, "https://m.media-amazon.com/images/I/61dlTXqaMLL._AC_SL1024_.jpg", true, "El secreto de sus ojos" },
+                    { 5, "Una serie de seis cortometrajes que exploran la violencia y la venganza en diferentes formas.", 5, "https://pics.filmaffinity.com/relatos_salvajes-285164385-large.jpg", true, "Relatos salvajes" },
+                    { 6, "Dos estafadores intentan vender una serie de sellos falsos extremadamente valiosos.", 6, "https://m.media-amazon.com/images/I/71aA-cKYcWL._AC_SL1500_.jpg", true, "Nueve reinas" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -7,8 +7,10 @@ namespace Infrastructure.Data
         bool DeleteShow(int idShow);
         List<Show>? GetShows();
         List<Show>? GetShowsByMovieId(int movieId);
-        bool ModifyShow(int idShow, string startTime, string date, string price);
+        bool ModifyShow(int idShow, DateTime date, decimal price);
 
-        void AddShow(string startTime, string date, string price, int movieId);
+        void AddShow(DateTime date, decimal price, int movieId);
+        public List<Show> GetShowsByDirectorOnDate(int directorId, DateTime date);
+        public List<Show> GetShowsByMovieOnDate(int movieId, DateTime date);
     }
 }

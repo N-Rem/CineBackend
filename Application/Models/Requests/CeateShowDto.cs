@@ -8,9 +8,8 @@ namespace Application.Models.Requests
 {
     public class CeateShowDto
     {
-        public string SartTime { get; set; }
-        public string Date { get; set; }
-        public string Price { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Price { get; set; }
         public int MovieId { get; set; }
     }
 }
