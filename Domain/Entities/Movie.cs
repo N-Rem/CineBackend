@@ -24,11 +24,9 @@ namespace Domain.Entities
         public int DirectorId { get; set; }
         //public Director DirectorMovie { get; set; } 
 
-        [Column(TypeName = "boolean")]
-        public bool IsNational { get; set; }
-
         public List<Show> Shows { get; set; }
 
+        
 
     }
 }

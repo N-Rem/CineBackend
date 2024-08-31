@@ -34,8 +34,7 @@ namespace Infrastructure.Migrations
                     Title = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
-                    DirectorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    IsNational = table.Column<bool>(type: "boolean", nullable: false)
+                    DirectorId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,9 +56,7 @@ namespace Infrastructure.Migrations
                     MovieId = table.Column<int>(type: "INTEGER", nullable: false),
                     StartTime = table.Column<string>(type: "nvarchar(20)", nullable: false),
                     Date = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    Price = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    DirectorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    IsNational = table.Column<bool>(type: "boolean", nullable: false)
+                    Price = table.Column<string>(type: "nvarchar(20)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,19 +76,17 @@ namespace Infrastructure.Migrations
                 {
                     { 1, "Chad Stahelski" },
                     { 2, "Tim Miller" },
-                    { 3, "Jon Watts" },
-                    { 4, "Alejandro Doria" }
+                    { 3, "Jon Watts" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Movies",
-                columns: new[] { "Id", "Description", "DirectorId", "ImageUrl", "IsNational", "Title" },
+                columns: new[] { "Id", "Description", "DirectorId", "ImageUrl", "Title" },
                 values: new object[,]
                 {
-                    { 1, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlMhuTYAKZHxZXA4OzjqcKaopJEjTOzLxnQ&s", false, "John Wick" },
-                    { 2, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 2, "https://pics.filmaffinity.com/Deadpool-834516798-mmed.jpg", false, "Deadpool" },
-                    { 3, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 3, "https://hips.hearstapps.com/hmg-prod/images/spiderman-homecoming-poster-1551691492.jpg", false, "Spiderman" },
-                    { 4, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 4, "https://www.arte.unicen.edu.ar/cdab/wp-content/uploads/2017/06/esperando-carroza.png", true, "Esperando la carroza" }
+                    { 1, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlMhuTYAKZHxZXA4OzjqcKaopJEjTOzLxnQ&s", "John Wick" },
+                    { 2, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 2, "https://pics.filmaffinity.com/Deadpool-834516798-mmed.jpg", "Deadpool" },
+                    { 3, "Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod dolor? Obcaecati vero fuga nisi quos nam? Commodi magnam obcaecati animi deserunt blanditiis tempore ab sint ipsum veritatis. Aliquam, debitis.", 3, "https://hips.hearstapps.com/hmg-prod/images/spiderman-homecoming-poster-1551691492.jpg", "Spiderman" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -27,23 +27,15 @@ namespace Domain.Entities
         [Column(TypeName = "nvarchar(20)")]
         public string Price { get; set; }
 
-        [Required]
-        [ForeignKey("DirectorId")]
-        public int DirectorId { get; set; }
-
-        [Column(TypeName = "boolean")]
-        public bool IsNational { get; set; }
 
         public Show() { }
 
-        public Show(string startTime, string date, string price, int movieId, int directorId, bool isNational) 
+        public Show(string startTime, string date, string price, int movieId) 
         { 
             StartTime = startTime;
             Date = date;
             Price = price;
             MovieId = movieId;
-            DirectorId = directorId;
-            IsNational = isNational;
         }
 
     }
