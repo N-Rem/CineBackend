@@ -22,7 +22,8 @@ namespace Domain.Entities
         [Required]
         [ForeignKey("DirectorId")]
         public int DirectorId { get; set; }
-        //public Director DirectorMovie { get; set; } 
+
+        public bool IsNational { get; set; }
 
         public List<Show> Shows { get; set; }
 

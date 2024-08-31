@@ -50,8 +50,23 @@ namespace Cine.Controllers
         [HttpPost("[action]")]
         public IActionResult AddShow([FromBody] CeateShowDto show)
         {
-            _showService.AddShow(show);
-            return Ok();
+            try
+            {
+                _showService.AddShow(show);
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest($"Invalid operation: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
     }
 }

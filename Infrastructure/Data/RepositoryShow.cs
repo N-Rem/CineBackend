@@ -26,16 +26,15 @@ namespace Infrastructure.Data
 
         public List<Show>? GetShowsByMovieId(int movieId)
         {
-            return _context.Shows.Where(s => s.MovieId == movieId).ToList();
+            return _context.Shows.Where(s => s.Movie.Id == movieId).ToList();
         }
 
-        public bool ModifyShow(int idShow, string startTime, string date, string price)
+        public bool ModifyShow(int idShow, DateTime date, decimal price)
         {
             var showToModify = _context.Shows.FirstOrDefault(s => s.Id == idShow);
 
             if (showToModify is not null)
             {
-                showToModify.StartTime = startTime;
                 showToModify.Date = date;
                 showToModify.Price = price;
 
@@ -63,16 +62,34 @@ namespace Infrastructure.Data
         }
 
 
-        public void AddShow(string startTime, string date, string price, int movieId)
+        public void AddShow(DateTime date, decimal price, int movieId)
         {
-            var show = new Show(startTime, date, price, movieId);
+            var movie = _context.Movies.Find(movieId);
 
-            var movie = _context.Movies.Include(m => m.Shows).FirstOrDefault(m => m.Id == movieId);
+            if (movie == null)
+            {
+                throw new ArgumentException("Movie not found", nameof(movieId));
+            }
 
-            if (movie is not null)
-                movie.Shows.Add(show);
+            var show = new Show( date, price, movie);
+            _context.Shows.Add(show);
 
             _context.SaveChanges();
+        }
+
+        public List<Show> GetShowsByDirectorOnDate(int directorId, DateTime date)
+        {
+            return _context.Shows
+                .Include(s => s.Movie) 
+                .Where(s => s.Movie.DirectorId == directorId && s.Date.Date == date.Date)
+                .ToList();
+        }
+
+        public List<Show> GetShowsByMovieOnDate(int movieId, DateTime date)
+        {
+            return _context.Shows
+                .Where(s => s.Movie.Id == movieId && s.Date.Date == date.Date)
+                .ToList();
         }
     }
 }

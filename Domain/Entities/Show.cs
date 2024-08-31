@@ -16,26 +16,17 @@ namespace Domain.Entities
 
         [Required]
         [ForeignKey("MovieId")]  // Foreign Key
-        public int MovieId {  get; set; }
-
-        [Column(TypeName = "nvarchar(20)")]
-        public string StartTime { get; set; }
-
-        [Column(TypeName = "nvarchar(20)")] 
-        public string Date { get; set; }
-
-        [Column(TypeName = "nvarchar(20)")]
-        public string Price { get; set; }
-
+        public Movie Movie { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Price { get; set; }
 
         public Show() { }
 
-        public Show(string startTime, string date, string price, int movieId) 
+        public Show(DateTime date, decimal price, Movie movie) 
         { 
-            StartTime = startTime;
             Date = date;
             Price = price;
-            MovieId = movieId;
+            Movie = movie;
         }
 
     }
