@@ -64,8 +64,8 @@ namespace Application.Services
 
             if (!movie.IsNational)
             {
-                var showsForMovieOnDate = _showRepository.GetShowsByMovieOnDate(movie.Id, show.Date);
-                if (showsForMovieOnDate.Count >= 8)
+                var showsForMovie = _showRepository.GetShowsByMovieId(movie.Id);
+                if (showsForMovie.Count >= 8)
                 {
                     throw new InvalidOperationException("Cannot add more than 8 shows per day for an international movie.");
                 }
