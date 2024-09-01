@@ -23,7 +23,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Director> GetDirector(int id)
+        public ActionResult<Director?> GetDirector(int id)
         {
             var director = _directorService.GetDirectorById(id);
             if (director == null)
